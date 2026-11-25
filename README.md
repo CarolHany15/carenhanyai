@@ -62,7 +62,6 @@ PORT=5000
 NODE_ENV=development
 DATABASE_URL=YOUR_SUPABASE_POSTGRES_CONNECTION_STRING
 JWT_SECRET=PUT_A_RANDOM_SECRET_HERE_AT_LEAST_32_CHARACTERS_LONG
-FRONTEND_URL=http://localhost:5173
 ```
 
 Get the PostgreSQL connection string from your Supabase project's **Connect** menu. Use the recommended connection/pooler option for your environment. Keep this file private. Never put `DATABASE_URL` or `JWT_SECRET` in the frontend.
@@ -92,19 +91,19 @@ cd client
 npm install
 ```
 
-Create `client/.env` by copying `client/.env.example`. For local development, it should contain:
-
-```env
-VITE_API_URL=http://localhost:5000
-```
-
-Then run:
+The Vite development server proxies `/api` requests to the backend on port 5000, so no frontend API URL is needed. Then run:
 
 ```bash
 npm run dev
 ```
 
 Open the local URL Vite prints (normally `http://localhost:5173`).
+
+## Deploy both services to Vercel
+
+The root `vercel.json` deploys the Vite client and Express API as services in one Vercel project. The client is public at `/`; `/api/...` is routed to the server. They share the deployment's origin, so the browser uses relative `/api` URLs and no service binding is needed.
+
+Import the repository into Vercel with the repository root as the project root. Set `DATABASE_URL` and a `JWT_SECRET` of at least 32 characters in the Vercel project's environment variables for each deployment environment; do not expose them with a `VITE_` prefix. `vercel dev` can run both services locally; the regular Vite proxy flow above remains available for development too.
 
 ## 6. Create a receptionist account (optional)
 
