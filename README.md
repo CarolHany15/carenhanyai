@@ -43,11 +43,10 @@ You need Node.js 20 or newer and an existing Supabase project.
 
 ## 2. Prepare the Supabase database
 
-1. Open your Supabase project.
-2. Open **SQL Editor → New query**.
-3. Open `schema_update.sql` from this project, copy all its contents, paste them into the SQL Editor, and run it.
-4. The migration is additive: it does not drop tables or delete existing rows.
-5. Optional: if you want demo instructors and future sessions to appear in the app, run `database/demo_data_optional.sql` as a separate query. This is separate from the migration and can be skipped.
+1. Open your Supabase project and open **SQL Editor → New query**.
+2. For a new, empty database, run [`database/schema.sql`](database/schema.sql). It creates the complete tables and indexes the application needs.
+3. If you already have the original `customers`, `staff`, `diving_sessions`, and `bookings` tables, run [`schema_update.sql`](schema_update.sql) instead to add the app's custom-login and booking fields. Do not run both scripts on a new database.
+4. Optional: if you want demo instructors and future sessions to appear in the app, run [`database/demo_data_optional.sql`](database/demo_data_optional.sql) after the schema. This is separate from the schema and can be skipped.
 
 The frontend needs scheduled rows in `public.diving_sessions` to show bookable dives. The optional SQL creates three example future sessions.
 
