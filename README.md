@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DAHAB DIVE CENTER — Full-Stack Project
 
 A full-stack diving-center booking starter for the AAST AI project.
@@ -195,3 +196,6 @@ GitHub may ask you to sign in through your browser. Never put your GitHub passwo
 - The starter does not yet write to `booking_history`, enforce instructor availability, or include automated tests and pagination.
 - Before production, add a robust CSRF strategy and test cookie behavior in all target browsers. Cookies across unrelated Vercel and Render domains can be blocked by third-party-cookie restrictions. A same-site custom-domain setup is preferable.
 - Do not disable PostgreSQL SSL certificate verification to work around a certificate error. Configure the correct Supabase connection and CA certificate instead.
+=======
+# carenhanyai
+>>>>>>> 4dab2565d54c95ff0d1bbf4832bc0656f29968c7
